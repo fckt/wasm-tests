@@ -1,0 +1,29 @@
+dist: trusty
+sudo: required
+
+language:
+  - rust
+  - cpp
+
+rust:
+  nightly
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-6
+      - g++-6
+      - cmake
+
+before_install:
+  - |
+   wget -O /tmp/emsdk-portable.tar.gz https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
+   && tar xf /tmp/emsdk-portable.tar.gz -C /tmp/
+   && /tmp/emsdk-portable/emsdk install latest 2>&1 | grep -v '^x ' && /tmp/emsdk-portable/emsdk activate latest
+
+script:
+  - export CC=/usr/bin/gcc-6
+  - export CXX=/usr/bin/g++-6
+  - ./build.sh
