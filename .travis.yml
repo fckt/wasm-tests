@@ -19,8 +19,8 @@ addons:
 
 before_install:
   - |
-   wget -O /tmp/emsdk-portable.tar.gz https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
-   && tar xf /tmp/emsdk-portable.tar.gz -C /tmp/
+   wget -O /tmp/emsdk-portable.tar.gz https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz \
+   && tar xf /tmp/emsdk-portable.tar.gz -C /tmp/ \
    && /tmp/emsdk-portable/emsdk install latest 2>&1 | grep -v '^x ' && /tmp/emsdk-portable/emsdk activate latest
 
 script:
