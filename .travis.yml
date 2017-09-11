@@ -24,6 +24,7 @@ before_install:
    && /tmp/emsdk-portable/emsdk install latest 2>&1 | grep -v '^x ' && /tmp/emsdk-portable/emsdk activate latest
   - rustup target add asmjs-unknown-emscripten
   - rustup target add wasm32-unknown-emscripten
+  - cargo install --git https://github.com/paritytech/wasm-utils wasm-build
 
 script:
   - export CC=/usr/bin/gcc-6
