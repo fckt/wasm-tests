@@ -26,11 +26,14 @@ before_install:
    && tar xf /tmp/emsdk-portable.tar.gz -C /tmp/ \
    && /tmp/emsdk-portable/emsdk install latest 2>&1 | grep -v '^x ' && /tmp/emsdk-portable/emsdk activate latest
   - source /tmp/emsdk-portable/emsdk_env.sh
+
+# See https://github.com/kripken/emscripten/pull/5087
   - cd /tmp/emsdk-portable
   - mkdir libstdc++
+  - libstdc++
   - wget http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu/pool/main/g/gcc-5/libstdc++6-5-dbg_5.4.1-2ubuntu1\~14.04_amd64.deb
   - ar xv libstdc++6-5-dbg_5.4.1-2ubuntu1\~14.04_amd64.deb
-  - tar xf data.tar.gz
+  - tar -xf data.tar.gz
   - cd usr/lib/
   - export LD_LIBRARY_PATH=${PWD}
 
