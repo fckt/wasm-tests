@@ -41,5 +41,5 @@ before_install:
   - cargo install --git https://github.com/paritytech/wasm-utils wasm-build
 
 script:
-  - cd ~/fckt/wasm-tests
+  - cd $TRAVIS_BUILD_DIR
   - ./build.sh
